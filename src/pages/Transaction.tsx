@@ -97,37 +97,39 @@ const Transaction = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-mesh bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/30">
       <Navbar />
       
       <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fade-in">
-        <div className="mb-8">
-          <h2 className="text-4xl font-bold mb-2 bg-gradient-hero bg-clip-text text-transparent">Send Money</h2>
-          <p className="text-muted-foreground text-lg">Transfer funds instantly via UPI</p>
+        <div className="mb-10">
+          <h1 className="text-5xl font-bold mb-3 bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent">
+            Send Money
+          </h1>
+          <p className="text-muted-foreground text-lg">Transfer funds instantly and securely via UPI</p>
         </div>
 
         <div className="grid gap-6">
           {/* User Balance Card */}
-          <Card className="shadow-xl border-none bg-gradient-hero text-primary-foreground overflow-hidden relative group hover:shadow-2xl transition-shadow">
+          <Card className="shadow-lg border-none bg-gradient-to-br from-primary to-primary/90 text-white overflow-hidden relative group hover:shadow-xl transition-all duration-300">
             <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             <CardContent className="p-8 relative">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm opacity-90 mb-2 font-medium uppercase tracking-wide">Your UPI ID</p>
-                  <p className="text-3xl font-bold tracking-tight">{user.upiId}</p>
+                  <p className="text-sm opacity-95 mb-2 font-semibold uppercase tracking-wider">Your UPI ID</p>
+                  <p className="text-3xl font-bold">{user.upiId}</p>
                 </div>
-                <div className="p-4 bg-white/20 rounded-2xl backdrop-blur-sm group-hover:scale-110 transition-transform shadow-lg">
-                  <Wallet className="h-10 w-10" />
+                <div className="p-4 bg-white/25 rounded-xl backdrop-blur-sm group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <Wallet className="h-9 w-9" strokeWidth={2.5} />
                 </div>
               </div>
             </CardContent>
           </Card>
 
           {/* Transaction Form */}
-          <Card className="shadow-xl border-none">
-            <CardHeader>
-              <CardTitle className="text-2xl">Transaction Details</CardTitle>
-              <CardDescription className="text-base">Enter the recipient information and amount</CardDescription>
+          <Card className="shadow-md border hover:shadow-lg transition-shadow duration-300">
+            <CardHeader className="pb-6">
+              <CardTitle className="text-2xl font-bold">Transaction Details</CardTitle>
+              <CardDescription className="text-sm">Enter recipient information and amount to transfer</CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleTransaction} className="space-y-6">
@@ -185,7 +187,7 @@ const Transaction = () => {
                   </Select>
                 </div>
 
-                <Button type="submit" className="w-full gap-2 shadow-glow hover:shadow-xl transition-all text-lg py-6" disabled={isLoading}>
+                <Button type="submit" className="w-full gap-2 text-base py-6 font-semibold shadow-md hover:shadow-lg transition-all" disabled={isLoading}>
                   <Send className="h-5 w-5" />
                   {isLoading ? "Processing..." : "Send Money"}
                 </Button>
@@ -193,23 +195,23 @@ const Transaction = () => {
             </CardContent>
           </Card>
 
-          {/* Quick Actions */}
-          <Card className="shadow-xl border-none bg-gradient-card">
-            <CardHeader>
-              <CardTitle className="text-xl">Quick Tips</CardTitle>
+          {/* Quick Tips */}
+          <Card className="shadow-md border bg-gradient-to-br from-card to-secondary/30 hover:shadow-lg transition-shadow duration-300">
+            <CardHeader className="pb-4">
+              <CardTitle className="text-xl font-bold">💡 Quick Tips</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="flex items-start gap-3 group hover:translate-x-2 transition-transform">
-                <div className="w-3 h-3 bg-gradient-primary rounded-full mt-1 shadow-glow" />
-                <p className="text-muted-foreground leading-relaxed">Verify the UPI ID before sending money</p>
+            <CardContent className="space-y-3">
+              <div className="flex items-start gap-3 p-3 rounded-lg hover:bg-background/50 transition-colors">
+                <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
+                <p className="text-sm text-foreground/80 leading-relaxed">Double-check the UPI ID before sending money</p>
               </div>
-              <div className="flex items-start gap-3 group hover:translate-x-2 transition-transform">
-                <div className="w-3 h-3 bg-gradient-success rounded-full mt-1 shadow-glow-success" />
-                <p className="text-muted-foreground leading-relaxed">Transactions are instant and secure</p>
+              <div className="flex items-start gap-3 p-3 rounded-lg hover:bg-background/50 transition-colors">
+                <div className="w-2 h-2 bg-success rounded-full mt-2 flex-shrink-0" />
+                <p className="text-sm text-foreground/80 leading-relaxed">All transactions are processed instantly and securely</p>
               </div>
-              <div className="flex items-start gap-3 group hover:translate-x-2 transition-transform">
-                <div className="w-3 h-3 bg-gradient-to-br from-warning to-warning/80 rounded-full mt-1 shadow-md" />
-                <p className="text-muted-foreground leading-relaxed">You can track all transactions in the dashboard</p>
+              <div className="flex items-start gap-3 p-3 rounded-lg hover:bg-background/50 transition-colors">
+                <div className="w-2 h-2 bg-warning rounded-full mt-2 flex-shrink-0" />
+                <p className="text-sm text-foreground/80 leading-relaxed">Track your complete transaction history in the dashboard</p>
               </div>
             </CardContent>
           </Card>

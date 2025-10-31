@@ -6,36 +6,23 @@ interface StatsCardProps {
   value: string | number;
   icon: LucideIcon;
   trend?: string;
-  variant?: "default" | "success" | "warning";
+  variant?: 'default' | 'success';
 }
 
-const StatsCard = ({ title, value, icon: Icon, trend, variant = "default" }: StatsCardProps) => {
-  const variantStyles = {
-    default: "from-primary/10 to-primary/5",
-    success: "from-success/10 to-success/5",
-    warning: "from-warning/10 to-warning/5",
-  };
-
-  const iconStyles = {
-    default: "text-primary bg-primary/10",
-    success: "text-success bg-success/10",
-    warning: "text-warning bg-warning/10",
-  };
-
+const StatsCard = ({ title, value, icon: Icon, trend, variant = 'default' }: StatsCardProps) => {
   return (
-    <Card className="shadow-card hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group border-none overflow-hidden relative">
-      <div className={`absolute inset-0 bg-gradient-to-br ${variantStyles[variant]} opacity-50`} />
-      <CardContent className="p-6 relative">
-        <div className="flex items-start justify-between">
-          <div className="space-y-2">
-            <p className="text-sm text-muted-foreground font-medium uppercase tracking-wide">{title}</p>
-            <p className="text-3xl font-bold tracking-tight">{value}</p>
-            {trend && (
-              <p className="text-xs text-muted-foreground font-medium">{trend}</p>
-            )}
+    <Card className={`overflow-hidden border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 ${
+      variant === 'success' ? 'bg-gradient-to-br from-success to-success/90' : 'bg-gradient-to-br from-primary to-primary/90'
+    } group`}>
+      <CardContent className="p-6">
+        <div className="flex items-center justify-between">
+          <div className="space-y-1.5 text-white">
+            <p className="text-sm font-semibold opacity-95 uppercase tracking-wide">{title}</p>
+            <p className="text-3xl font-bold">{value}</p>
+            {trend && <p className="text-xs opacity-80 mt-1">{trend}</p>}
           </div>
-          <div className={`p-3 rounded-xl ${iconStyles[variant]} group-hover:scale-110 transition-transform shadow-md`}>
-            <Icon className="h-6 w-6" />
+          <div className="p-3.5 bg-white/25 rounded-xl backdrop-blur-sm group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+            <Icon className="h-7 w-7 text-white" strokeWidth={2.5} />
           </div>
         </div>
       </CardContent>

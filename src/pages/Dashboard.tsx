@@ -39,13 +39,15 @@ const Dashboard = () => {
   const recentTransactions = transactions.slice(0, 10);
 
   return (
-    <div className="min-h-screen bg-gradient-mesh bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/30">
       <Navbar />
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fade-in">
-        <div className="mb-8">
-          <h2 className="text-4xl font-bold mb-2 bg-gradient-hero bg-clip-text text-transparent">Dashboard</h2>
-          <p className="text-muted-foreground text-lg">Overview of your UPI activity and performance</p>
+        <div className="mb-10">
+          <h1 className="text-5xl font-bold mb-3 bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent">
+            Dashboard
+          </h1>
+          <p className="text-muted-foreground text-lg">Your complete UPI activity overview</p>
         </div>
 
         {/* Stats Grid */}
@@ -81,10 +83,10 @@ const Dashboard = () => {
         {/* Charts Row */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           {/* Transaction Volume Chart */}
-          <Card className="shadow-xl border-none hover:shadow-2xl transition-shadow">
-            <CardHeader>
-              <CardTitle className="text-xl">Transaction Volume</CardTitle>
-              <CardDescription className="text-base">Last 7 days activity</CardDescription>
+          <Card className="shadow-md border hover:shadow-lg transition-all duration-300">
+            <CardHeader className="pb-4">
+              <CardTitle className="text-xl font-bold">Transaction Volume</CardTitle>
+              <CardDescription className="text-sm">Last 7 days activity</CardDescription>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={300}>
@@ -108,10 +110,10 @@ const Dashboard = () => {
           </Card>
 
           {/* Category Breakdown */}
-          <Card className="shadow-xl border-none hover:shadow-2xl transition-shadow">
-            <CardHeader>
-              <CardTitle className="text-xl">Spending by Category</CardTitle>
-              <CardDescription className="text-base">Distribution of expenses</CardDescription>
+          <Card className="shadow-md border hover:shadow-lg transition-all duration-300">
+            <CardHeader className="pb-4">
+              <CardTitle className="text-xl font-bold">Spending by Category</CardTitle>
+              <CardDescription className="text-sm">Distribution of expenses</CardDescription>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={300}>
@@ -144,22 +146,22 @@ const Dashboard = () => {
         </div>
 
         {/* Recent Transactions */}
-        <Card className="shadow-xl border-none">
-          <CardHeader>
-            <CardTitle className="text-xl">Recent Transactions</CardTitle>
-            <CardDescription className="text-base">Your latest payment activity</CardDescription>
+        <Card className="shadow-md border hover:shadow-lg transition-shadow duration-300">
+          <CardHeader className="pb-4">
+            <CardTitle className="text-xl font-bold">Recent Transactions</CardTitle>
+            <CardDescription className="text-sm">Your latest payment activity</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
+            <div className="space-y-3">
               {recentTransactions.map((transaction, index) => (
                 <div
                   key={transaction.id}
-                  className="flex items-center justify-between p-4 rounded-xl border border-border/50 hover:bg-gradient-card hover:shadow-md transition-all duration-300 hover:-translate-y-1 group"
+                  className="flex items-center justify-between p-4 rounded-lg border bg-card hover:bg-secondary/50 hover:shadow-sm transition-all duration-200 group"
                   style={{ animationDelay: `${index * 0.05}s` }}
                 >
                   <div className="flex items-center gap-4">
-                    <div className={`p-2 rounded-xl shadow-md group-hover:scale-110 transition-transform ${
-                      transaction.type === 'sent' ? 'bg-gradient-primary' : 'bg-gradient-success'
+                    <div className={`p-2.5 rounded-lg group-hover:scale-105 transition-transform ${
+                      transaction.type === 'sent' ? 'bg-gradient-to-br from-primary to-primary/90' : 'bg-gradient-to-br from-success to-success/90'
                     }`}>
                       {transaction.type === 'sent' ? (
                         <ArrowUpRight className="h-5 w-5 text-white" />

@@ -82,7 +82,7 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-mesh bg-background flex items-center justify-center p-4 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/30 flex items-center justify-center p-4 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-float" />
@@ -93,18 +93,18 @@ const Auth = () => {
         {/* Left side - Branding */}
         <div className="hidden md:block space-y-8 animate-slide-up">
           <div className="space-y-4">
-            <h1 className="text-6xl font-bold bg-gradient-hero bg-clip-text text-transparent animate-scale-in">
+            <h1 className="text-6xl font-bold bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent animate-scale-in">
               Smart UPI
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              Experience the future of digital payments with intelligent analytics and seamless transactions
+              The future of digital payments with smart analytics and instant transactions
             </p>
           </div>
           
-          <div className="space-y-6">
+          <div className="space-y-5">
             <div className="flex items-start gap-4 group hover:translate-x-2 transition-transform duration-300">
-              <div className="p-3 rounded-xl bg-gradient-primary shadow-glow group-hover:scale-110 transition-transform">
-                <Wallet className="h-6 w-6 text-white" />
+              <div className="p-3 rounded-xl bg-gradient-to-br from-primary to-primary/90 shadow-md group-hover:scale-105 transition-transform">
+                <Wallet className="h-6 w-6 text-white" strokeWidth={2.5} />
               </div>
               <div>
                 <h3 className="font-semibold mb-1 text-lg">Instant Payments</h3>
@@ -113,18 +113,18 @@ const Auth = () => {
             </div>
             
             <div className="flex items-start gap-4 group hover:translate-x-2 transition-transform duration-300" style={{ animationDelay: "0.1s" }}>
-              <div className="p-3 rounded-xl bg-gradient-success shadow-glow-success group-hover:scale-110 transition-transform">
-                <TrendingUp className="h-6 w-6 text-white" />
+              <div className="p-3 rounded-xl bg-gradient-to-br from-success to-success/90 shadow-md group-hover:scale-105 transition-transform">
+                <TrendingUp className="h-6 w-6 text-white" strokeWidth={2.5} />
               </div>
               <div>
-                <h3 className="font-semibold mb-1 text-lg">Smart Analytics</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">Track your spending with detailed insights</p>
+                <h3 className="font-bold mb-1 text-lg">Smart Analytics</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">Track spending with detailed insights and reports</p>
               </div>
             </div>
             
             <div className="flex items-start gap-4 group hover:translate-x-2 transition-transform duration-300" style={{ animationDelay: "0.2s" }}>
-              <div className="p-3 rounded-xl bg-gradient-to-br from-warning to-warning/80 shadow-lg group-hover:scale-110 transition-transform">
-                <Shield className="h-6 w-6 text-white" />
+              <div className="p-3 rounded-xl bg-gradient-to-br from-warning to-warning/90 shadow-md group-hover:scale-105 transition-transform">
+                <Shield className="h-6 w-6 text-white" strokeWidth={2.5} />
               </div>
               <div>
                 <h3 className="font-semibold mb-1 text-lg">Secure & Safe</h3>
@@ -135,10 +135,10 @@ const Auth = () => {
         </div>
 
         {/* Right side - Auth forms */}
-        <Card className="shadow-xl glass-card animate-scale-in border-white/40">
-          <CardHeader className="space-y-2">
-            <CardTitle className="text-2xl">Welcome Back</CardTitle>
-            <CardDescription className="text-base">Login or create an account to get started</CardDescription>
+        <Card className="shadow-lg border animate-scale-in">
+          <CardHeader className="space-y-1.5 pb-6">
+            <CardTitle className="text-2xl font-bold">Welcome Back</CardTitle>
+            <CardDescription className="text-sm">Login or create your account to get started</CardDescription>
           </CardHeader>
           <CardContent>
             <Tabs defaultValue="login" className="w-full">
@@ -170,7 +170,7 @@ const Auth = () => {
                       required
                     />
                   </div>
-                  <Button type="submit" className="w-full shadow-glow hover:shadow-xl transition-shadow" disabled={isLoading}>
+                  <Button type="submit" className="w-full font-semibold shadow-md hover:shadow-lg transition-all" disabled={isLoading}>
                     {isLoading ? "Logging in..." : "Login"}
                   </Button>
                 </form>
@@ -221,7 +221,7 @@ const Auth = () => {
                       required
                     />
                   </div>
-                  <Button type="submit" className="w-full shadow-glow hover:shadow-xl transition-shadow" disabled={isLoading}>
+                  <Button type="submit" className="w-full font-semibold shadow-md hover:shadow-lg transition-all" disabled={isLoading}>
                     {isLoading ? "Creating account..." : "Create Account"}
                   </Button>
                 </form>
