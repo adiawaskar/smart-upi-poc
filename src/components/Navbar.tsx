@@ -18,18 +18,18 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="border-b border-border bg-card shadow-sm">
+    <nav className="border-b border-border/50 bg-card/80 backdrop-blur-lg shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center gap-8">
-            <h1 className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+            <h1 className="text-2xl font-bold bg-gradient-hero bg-clip-text text-transparent">
               Smart UPI
             </h1>
-            <div className="hidden md:flex items-center gap-4">
+            <div className="hidden md:flex items-center gap-2">
               <Button
                 variant={location.pathname === "/" ? "default" : "ghost"}
                 onClick={() => navigate("/")}
-                className="gap-2"
+                className="gap-2 transition-all hover:scale-105"
               >
                 <LayoutDashboard className="h-4 w-4" />
                 Dashboard
@@ -37,14 +37,14 @@ const Navbar = () => {
               <Button
                 variant={location.pathname === "/transaction" ? "default" : "ghost"}
                 onClick={() => navigate("/transaction")}
-                className="gap-2"
+                className="gap-2 transition-all hover:scale-105"
               >
                 <Send className="h-4 w-4" />
                 Send Money
               </Button>
             </div>
           </div>
-          <Button variant="outline" onClick={handleLogout} className="gap-2">
+          <Button variant="outline" onClick={handleLogout} className="gap-2 hover:bg-destructive hover:text-destructive-foreground transition-colors">
             <LogOut className="h-4 w-4" />
             Logout
           </Button>

@@ -97,36 +97,37 @@ const Transaction = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-mesh bg-background">
       <Navbar />
       
-      <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fade-in">
         <div className="mb-8">
-          <h2 className="text-3xl font-bold mb-2">Send Money</h2>
-          <p className="text-muted-foreground">Transfer funds instantly via UPI</p>
+          <h2 className="text-4xl font-bold mb-2 bg-gradient-hero bg-clip-text text-transparent">Send Money</h2>
+          <p className="text-muted-foreground text-lg">Transfer funds instantly via UPI</p>
         </div>
 
         <div className="grid gap-6">
           {/* User Balance Card */}
-          <Card className="shadow-card bg-gradient-primary text-primary-foreground">
-            <CardContent className="p-6">
+          <Card className="shadow-xl border-none bg-gradient-hero text-primary-foreground overflow-hidden relative group hover:shadow-2xl transition-shadow">
+            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            <CardContent className="p-8 relative">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm opacity-90 mb-1">Your UPI ID</p>
-                  <p className="text-2xl font-bold">{user.upiId}</p>
+                  <p className="text-sm opacity-90 mb-2 font-medium uppercase tracking-wide">Your UPI ID</p>
+                  <p className="text-3xl font-bold tracking-tight">{user.upiId}</p>
                 </div>
-                <div className="p-4 bg-white/20 rounded-full">
-                  <Wallet className="h-8 w-8" />
+                <div className="p-4 bg-white/20 rounded-2xl backdrop-blur-sm group-hover:scale-110 transition-transform shadow-lg">
+                  <Wallet className="h-10 w-10" />
                 </div>
               </div>
             </CardContent>
           </Card>
 
           {/* Transaction Form */}
-          <Card className="shadow-card">
+          <Card className="shadow-xl border-none">
             <CardHeader>
-              <CardTitle>Transaction Details</CardTitle>
-              <CardDescription>Enter the recipient information and amount</CardDescription>
+              <CardTitle className="text-2xl">Transaction Details</CardTitle>
+              <CardDescription className="text-base">Enter the recipient information and amount</CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleTransaction} className="space-y-6">
@@ -184,8 +185,8 @@ const Transaction = () => {
                   </Select>
                 </div>
 
-                <Button type="submit" className="w-full gap-2" disabled={isLoading}>
-                  <Send className="h-4 w-4" />
+                <Button type="submit" className="w-full gap-2 shadow-glow hover:shadow-xl transition-all text-lg py-6" disabled={isLoading}>
+                  <Send className="h-5 w-5" />
                   {isLoading ? "Processing..." : "Send Money"}
                 </Button>
               </form>
@@ -193,22 +194,22 @@ const Transaction = () => {
           </Card>
 
           {/* Quick Actions */}
-          <Card className="shadow-card">
+          <Card className="shadow-xl border-none bg-gradient-card">
             <CardHeader>
-              <CardTitle>Quick Tips</CardTitle>
+              <CardTitle className="text-xl">Quick Tips</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3">
-              <div className="flex items-start gap-3 text-sm">
-                <div className="w-2 h-2 bg-primary rounded-full mt-1.5" />
-                <p className="text-muted-foreground">Verify the UPI ID before sending money</p>
+            <CardContent className="space-y-4">
+              <div className="flex items-start gap-3 group hover:translate-x-2 transition-transform">
+                <div className="w-3 h-3 bg-gradient-primary rounded-full mt-1 shadow-glow" />
+                <p className="text-muted-foreground leading-relaxed">Verify the UPI ID before sending money</p>
               </div>
-              <div className="flex items-start gap-3 text-sm">
-                <div className="w-2 h-2 bg-success rounded-full mt-1.5" />
-                <p className="text-muted-foreground">Transactions are instant and secure</p>
+              <div className="flex items-start gap-3 group hover:translate-x-2 transition-transform">
+                <div className="w-3 h-3 bg-gradient-success rounded-full mt-1 shadow-glow-success" />
+                <p className="text-muted-foreground leading-relaxed">Transactions are instant and secure</p>
               </div>
-              <div className="flex items-start gap-3 text-sm">
-                <div className="w-2 h-2 bg-warning rounded-full mt-1.5" />
-                <p className="text-muted-foreground">You can track all transactions in the dashboard</p>
+              <div className="flex items-start gap-3 group hover:translate-x-2 transition-transform">
+                <div className="w-3 h-3 bg-gradient-to-br from-warning to-warning/80 rounded-full mt-1 shadow-md" />
+                <p className="text-muted-foreground leading-relaxed">You can track all transactions in the dashboard</p>
               </div>
             </CardContent>
           </Card>

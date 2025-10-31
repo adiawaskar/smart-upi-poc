@@ -39,13 +39,13 @@ const Dashboard = () => {
   const recentTransactions = transactions.slice(0, 10);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-mesh bg-background">
       <Navbar />
       
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fade-in">
         <div className="mb-8">
-          <h2 className="text-3xl font-bold mb-2">Dashboard</h2>
-          <p className="text-muted-foreground">Overview of your UPI activity and performance</p>
+          <h2 className="text-4xl font-bold mb-2 bg-gradient-hero bg-clip-text text-transparent">Dashboard</h2>
+          <p className="text-muted-foreground text-lg">Overview of your UPI activity and performance</p>
         </div>
 
         {/* Stats Grid */}
@@ -81,10 +81,10 @@ const Dashboard = () => {
         {/* Charts Row */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           {/* Transaction Volume Chart */}
-          <Card className="shadow-card">
+          <Card className="shadow-xl border-none hover:shadow-2xl transition-shadow">
             <CardHeader>
-              <CardTitle>Transaction Volume</CardTitle>
-              <CardDescription>Last 7 days activity</CardDescription>
+              <CardTitle className="text-xl">Transaction Volume</CardTitle>
+              <CardDescription className="text-base">Last 7 days activity</CardDescription>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={300}>
@@ -108,10 +108,10 @@ const Dashboard = () => {
           </Card>
 
           {/* Category Breakdown */}
-          <Card className="shadow-card">
+          <Card className="shadow-xl border-none hover:shadow-2xl transition-shadow">
             <CardHeader>
-              <CardTitle>Spending by Category</CardTitle>
-              <CardDescription>Distribution of expenses</CardDescription>
+              <CardTitle className="text-xl">Spending by Category</CardTitle>
+              <CardDescription className="text-base">Distribution of expenses</CardDescription>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={300}>
@@ -144,28 +144,27 @@ const Dashboard = () => {
         </div>
 
         {/* Recent Transactions */}
-        <Card className="shadow-card">
+        <Card className="shadow-xl border-none">
           <CardHeader>
-            <CardTitle>Recent Transactions</CardTitle>
-            <CardDescription>Your latest payment activity</CardDescription>
+            <CardTitle className="text-xl">Recent Transactions</CardTitle>
+            <CardDescription className="text-base">Your latest payment activity</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {recentTransactions.map((transaction) => (
+              {recentTransactions.map((transaction, index) => (
                 <div
                   key={transaction.id}
-                  className="flex items-center justify-between p-4 rounded-lg border border-border hover:bg-secondary/50 transition-colors"
+                  className="flex items-center justify-between p-4 rounded-xl border border-border/50 hover:bg-gradient-card hover:shadow-md transition-all duration-300 hover:-translate-y-1 group"
+                  style={{ animationDelay: `${index * 0.05}s` }}
                 >
                   <div className="flex items-center gap-4">
-                    <div className={`p-2 rounded-lg ${
-                      transaction.type === 'sent' ? 'bg-primary/10' : 'bg-success/10'
+                    <div className={`p-2 rounded-xl shadow-md group-hover:scale-110 transition-transform ${
+                      transaction.type === 'sent' ? 'bg-gradient-primary' : 'bg-gradient-success'
                     }`}>
                       {transaction.type === 'sent' ? (
-                        <ArrowUpRight className={`h-5 w-5 ${
-                          transaction.type === 'sent' ? 'text-primary' : 'text-success'
-                        }`} />
+                        <ArrowUpRight className="h-5 w-5 text-white" />
                       ) : (
-                        <ArrowDownRight className="h-5 w-5 text-success" />
+                        <ArrowDownRight className="h-5 w-5 text-white" />
                       )}
                     </div>
                     <div>
