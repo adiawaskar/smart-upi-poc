@@ -110,4 +110,22 @@ All colors MUST be HSL.
   .gradient-text {
     @apply bg-gradient-primary bg-clip-text text-transparent;
   }
+  
+  @keyframes grid-move {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(50px);
+    }
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
 }
