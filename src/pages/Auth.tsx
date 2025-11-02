@@ -83,26 +83,10 @@ const Auth = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/30 flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Animated background elements with multiple orbs */}
+      {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-float" />
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-success/10 rounded-full blur-3xl animate-float" style={{ animationDelay: "1s" }} />
-        <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-warning/8 rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
-        <div className="absolute bottom-1/4 right-1/3 w-72 h-72 bg-accent/8 rounded-full blur-3xl animate-float" style={{ animationDelay: "1.5s" }} />
-        
-        {/* Animated grid pattern */}
-        <div className="absolute inset-0 opacity-[0.03]">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `linear-gradient(hsl(var(--primary)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)`,
-            backgroundSize: '50px 50px',
-            animation: 'grid-move 20s linear infinite'
-          }} />
-        </div>
-        
-        {/* Floating particles */}
-        <div className="absolute top-1/4 left-1/3 w-2 h-2 bg-primary/20 rounded-full animate-float" style={{ animationDelay: "0.5s", animationDuration: "4s" }} />
-        <div className="absolute top-2/3 left-2/3 w-3 h-3 bg-success/20 rounded-full animate-float" style={{ animationDelay: "1.2s", animationDuration: "5s" }} />
-        <div className="absolute top-1/3 right-1/4 w-2 h-2 bg-warning/20 rounded-full animate-float" style={{ animationDelay: "0.8s", animationDuration: "4.5s" }} />
       </div>
       
       <div className="w-full max-w-6xl grid md:grid-cols-2 gap-8 items-center relative z-10 animate-fade-in">
@@ -150,122 +134,95 @@ const Auth = () => {
           </div>
         </div>
 
-        {/* Right side - Auth forms with glass effect */}
-        <Card className="shadow-2xl border-2 border-white/20 backdrop-blur-xl bg-white/90 animate-scale-in relative overflow-hidden group">
-          {/* Animated gradient border effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-success opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-xl" />
-          
-          <CardHeader className="space-y-1.5 pb-6 relative">
-            <CardTitle className="text-3xl font-bold bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent">
-              Welcome Back
-            </CardTitle>
-            <CardDescription className="text-sm text-muted-foreground">
-              Login or create your account to get started
-            </CardDescription>
+        {/* Right side - Auth forms */}
+        <Card className="shadow-lg border animate-scale-in">
+          <CardHeader className="space-y-1.5 pb-6">
+            <CardTitle className="text-2xl font-bold">Welcome Back</CardTitle>
+            <CardDescription className="text-sm">Login or create your account to get started</CardDescription>
           </CardHeader>
-          <CardContent className="relative">
+          <CardContent>
             <Tabs defaultValue="login" className="w-full">
-              <TabsList className="grid w-full grid-cols-2 bg-secondary/50 backdrop-blur-sm">
-                <TabsTrigger value="login" className="data-[state=active]:bg-white data-[state=active]:shadow-md transition-all">
-                  Login
-                </TabsTrigger>
-                <TabsTrigger value="signup" className="data-[state=active]:bg-white data-[state=active]:shadow-md transition-all">
-                  Sign Up
-                </TabsTrigger>
+              <TabsList className="grid w-full grid-cols-2">
+                <TabsTrigger value="login">Login</TabsTrigger>
+                <TabsTrigger value="signup">Sign Up</TabsTrigger>
               </TabsList>
               
               <TabsContent value="login">
-                <form onSubmit={handleLogin} className="space-y-5 mt-6">
-                  <div className="space-y-2 group">
-                    <Label htmlFor="login-email" className="text-sm font-medium">Email</Label>
+                <form onSubmit={handleLogin} className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="login-email">Email</Label>
                     <Input
                       id="login-email"
                       type="email"
                       placeholder="john@example.com"
                       value={loginEmail}
                       onChange={(e) => setLoginEmail(e.target.value)}
-                      className="transition-all duration-300 focus:shadow-md focus:scale-[1.01] border-2 hover:border-primary/30"
                       required
                     />
                   </div>
-                  <div className="space-y-2 group">
-                    <Label htmlFor="login-password" className="text-sm font-medium">Password</Label>
+                  <div className="space-y-2">
+                    <Label htmlFor="login-password">Password</Label>
                     <Input
                       id="login-password"
                       type="password"
                       value={loginPassword}
                       onChange={(e) => setLoginPassword(e.target.value)}
-                      className="transition-all duration-300 focus:shadow-md focus:scale-[1.01] border-2 hover:border-primary/30"
                       required
                     />
                   </div>
-                  <Button 
-                    type="submit" 
-                    className="w-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] relative overflow-hidden group" 
-                    disabled={isLoading}
-                  >
-                    <span className="relative z-10">{isLoading ? "Logging in..." : "Login"}</span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] opacity-0 group-hover:opacity-100 transition-opacity animate-[shimmer_2s_linear_infinite]" />
+                  <Button type="submit" className="w-full font-semibold shadow-md hover:shadow-lg transition-all" disabled={isLoading}>
+                    {isLoading ? "Logging in..." : "Login"}
                   </Button>
                 </form>
               </TabsContent>
               
               <TabsContent value="signup">
-                <form onSubmit={handleSignup} className="space-y-4 mt-6">
-                  <div className="space-y-2 group">
-                    <Label htmlFor="signup-name" className="text-sm font-medium">Full Name</Label>
+                <form onSubmit={handleSignup} className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="signup-name">Full Name</Label>
                     <Input
                       id="signup-name"
                       type="text"
                       placeholder="John Doe"
                       value={signupName}
                       onChange={(e) => setSignupName(e.target.value)}
-                      className="transition-all duration-300 focus:shadow-md focus:scale-[1.01] border-2 hover:border-primary/30"
                       required
                     />
                   </div>
-                  <div className="space-y-2 group">
-                    <Label htmlFor="signup-email" className="text-sm font-medium">Email</Label>
+                  <div className="space-y-2">
+                    <Label htmlFor="signup-email">Email</Label>
                     <Input
                       id="signup-email"
                       type="email"
                       placeholder="john@example.com"
                       value={signupEmail}
                       onChange={(e) => setSignupEmail(e.target.value)}
-                      className="transition-all duration-300 focus:shadow-md focus:scale-[1.01] border-2 hover:border-primary/30"
                       required
                     />
                   </div>
-                  <div className="space-y-2 group">
-                    <Label htmlFor="signup-phone" className="text-sm font-medium">Phone Number</Label>
+                  <div className="space-y-2">
+                    <Label htmlFor="signup-phone">Phone Number</Label>
                     <Input
                       id="signup-phone"
                       type="tel"
                       placeholder="+91 98765 43210"
                       value={signupPhone}
                       onChange={(e) => setSignupPhone(e.target.value)}
-                      className="transition-all duration-300 focus:shadow-md focus:scale-[1.01] border-2 hover:border-primary/30"
                       required
                     />
                   </div>
-                  <div className="space-y-2 group">
-                    <Label htmlFor="signup-password" className="text-sm font-medium">Password</Label>
+                  <div className="space-y-2">
+                    <Label htmlFor="signup-password">Password</Label>
                     <Input
                       id="signup-password"
                       type="password"
                       value={signupPassword}
                       onChange={(e) => setSignupPassword(e.target.value)}
-                      className="transition-all duration-300 focus:shadow-md focus:scale-[1.01] border-2 hover:border-primary/30"
                       required
                     />
                   </div>
-                  <Button 
-                    type="submit" 
-                    className="w-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] relative overflow-hidden group" 
-                    disabled={isLoading}
-                  >
-                    <span className="relative z-10">{isLoading ? "Creating account..." : "Create Account"}</span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] opacity-0 group-hover:opacity-100 transition-opacity animate-[shimmer_2s_linear_infinite]" />
+                  <Button type="submit" className="w-full font-semibold shadow-md hover:shadow-lg transition-all" disabled={isLoading}>
+                    {isLoading ? "Creating account..." : "Create Account"}
                   </Button>
                 </form>
               </TabsContent>
